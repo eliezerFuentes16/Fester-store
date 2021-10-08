@@ -47,6 +47,46 @@ $seccion="carrito";
 		</div>
 	</div>
 </div>
+
+
+<!-- <form id="payment-form">
+    <div id="card-element"> -->
+      <!-- Elements will create input elements here -->
+    <!-- </div> -->
+
+    <!-- We'll put the error messages in this element -->
+<!--     <div id="card-errors" role="alert"></div>
+
+    <button id="submit">Pay</button>
+</form> -->
+
+
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.min.js"></script>
 <script type="text/javascript" src="{!! asset('js/clientes/seguimiento.js') !!}"></script>
+
+<!-- 
+<script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript">
+	//var stripe = Stripe('pk_test_0Ga5yq6irMUHhWqoszTiR3Ib00nKcMInJI', {
+	
+	// Initialize Stripe.js with the same connected account ID used when creating
+	// the PaymentIntent.
+	var stripe = Stripe('pk_test_0Ga5yq6irMUHhWqoszTiR3Ib00nKcMInJI', {
+	  stripeAccount: ''
+	});
+
+	// Set up Stripe.js and Elements to use in checkout form
+var elements = stripe.elements();
+var style = {
+  base: {
+    color: "#32325d",
+  }
+};
+
+var card = elements.create("card", { style: style });
+card.mount("#card-element");
+</script> -->
 @endsection

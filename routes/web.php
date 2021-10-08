@@ -5,6 +5,7 @@ use App\Models\pedido;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdministracionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,26 +44,10 @@ Route::get('/registrarse/clientes', [LoginController::class, 'vistaRegistrarse']
 
 
 // Administracion
+Route::get('/administracion', [AdministracionController::class, 'administracion'])->middleware("auth");
 
+Route::get('/administracion/pedidos', [AdministracionController::class, 'administracionPedidos'])->middleware("auth");
 
-Route::get('/administracion', function () {
-	if (Auth::user()["administrador"]){
-		$pedidos=pedido::where("ENTREGADO",FALSE)->get();
-   		return view('administracion',compact("pedidos"));
-	}else{
-		return redirect("/catalogo");
-	}
-})->middleware("auth");
-
-Route::get('/administracion/pedidos', function () {
-	if (Auth::user()["administrador"]){
-		$pedidos=pedido::where("ENTREGADO",TRUE)->get();
-   		return view('ordenes_entregadas',compact("pedidos"));
-	}else{
-		return redirect("/catalogo");
-	}
-})->middleware("auth");
-
+// Login
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

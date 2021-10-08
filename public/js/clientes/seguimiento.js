@@ -59,7 +59,7 @@ btnSeguimiento.addEventListener("click",(e)=>{
 					
 					
 					if (datos.STATUS=="Nuevo"){
-						status.innerHTML=`<i class="fas fa-cart-plus fs-4"></i>&nbsp;En Nuevo`
+						status.innerHTML=`<i class="fas fa-cart-plus fs-4"></i>&nbsp;Nuevo`
 					}else if (datos.STATUS=="En Bodega"){
 						status.innerHTML=`<i class="fas fa-store fs-4"></i>&nbsp;En Bodega`
 					}else if (datos.STATUS=="Domicilio"){

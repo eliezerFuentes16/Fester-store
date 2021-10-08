@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 # MODELOS
-use App\Models\producto;
+
+use App\Http\Controllers\ApiController;
 use App\Models\pedido;
 
 /*
@@ -16,17 +17,43 @@ use App\Models\pedido;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/Catalogo/Productos', function () {
 
-    return producto::all();
+Route::get('/Catalogo/Productos', [ApiController::class, 'ApiProductos']);
+
+
+Route::get('/seguimiento/{id}', [ApiController::class, 'ApiSeguimiento']);
+
+Route::post('/hacer-pedido', function () {
+	$request=request();
+	$pedido = new pedido;
+	// return $pedido->create($request->all());
+
+	//return [$request->productos, $request->total,Auth::user()["id"]];
+	$pedido->idPedido=$request->idPedido;
+	$pedido->NOMBRE=$request->nombre;
+	$pedido->TELEFONO=$request->telefono;
+	$pedido->DIRECCION=$request->direccion;
+	$pedido->EMAIL=$request->email;
+	$pedido->FECHAHORA=date('Y-m-d H:i:s');
+	$pedido->OBSERVACIONES=$request->observaciones;
+	$pedido->FORMAPAGO=$request->formaPago;
+	$pedido->CAMBIO=$request->cambio;
+	$pedido->COLONIA="";
+	$pedido->SUCURSAL="";
+	$pedido->STATUS="Nuevo";
+	$pedido->PRODUCTOS=$request->productos;
+	$pedido->TOTAL=$request->total;
+	$pedido->ENTREGADO=FALSE;
+	$pedido->idCliente=Auth::user()["id"];
+	$pedido->FACTURA=$request->factura;
+	$pedido->NombreRazonSocial=$request->nombreRazon;
+	// $pedido->rfc=$request->rfc;
+	$pedido->save();
+
+
+	$data = pedido::latest('id')->first();
+	//return array('id'=>$pedido->id);
+	return $data;
 });
 
-Route::get('/seguimiento/{id}', function ($id) {
-	return pedido::where("id",$id)->get();
-    
-});
 
-
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });

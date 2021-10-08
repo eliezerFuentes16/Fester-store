@@ -92,7 +92,7 @@ const leerTodo=()=>{
 				if (pedidos.length!=0){
 					divContainer.innerHTML+=`<h3 class="pb-4 text-end total">Total: $${total2.toFixed(2)}</h3><div class="div-button">
 
-					<a href="/Catalogo" class="btn btn-primary">Volver al Catalogo</a>
+					<a href="/catalogo" class="btn btn-primary">Volver al Catalogo</a>
 					<button href="" class="btn btn-primary hacer-pedido">Hacer Pedido</button>
 					</div>`
 					let btnHacerPedido=document.querySelector(".hacer-pedido");
@@ -115,7 +115,7 @@ const leerTodo=()=>{
 				}else{
 					divContainer.innerHTML+=`
 					<p class="text-center fs-3 text-danger">No ha pedido ningun producto</p>
-					<a href="/Catalogo" class="btn btn-primary m-auto d-block">Volver al Catalogo</a>`
+					<a href="/catalogo" class="btn btn-primary m-auto d-block">Volver al Catalogo</a>`
 				}
 				console.log(total2)
 				pedido2=0;
@@ -157,7 +157,7 @@ const verificarPedido=()=>{
 			if (pedidosV.length==0){
 				divContainer.innerHTML=`<h1>Pedido</h1>
 				<p class="text-center fs-3 text-danger">No ha pedido ningun producto</p>
-				<a href="/Catalogo" class="btn btn-primary m-auto d-block">Volver al Catalogo</a>`
+				<a href="/catalogo" class="btn btn-primary m-auto d-block">Volver al Catalogo</a>`
 			}else{
 				for (let i = 0; i < pedidosV.length; i++) {
 					total2=pedidosV[i][1].total+total2;
@@ -227,7 +227,7 @@ const eliminarProductoPedido=(key)=>{
 
 // 						divContainer.innerHTML=`<h1>Pedido</h1>
 // 							<p class="text-center fs-3 text-danger">No ha pedido ningun producto</p>
-// 							<a href="/Catalogo" class="btn btn-primary m-auto d-block">Volver al Catalogo</a>`
+// 							<a href="/catalogo" class="btn btn-primary m-auto d-block">Volver al Catalogo</a>`
 						
 						
 // 						objectStore2.delete(idPedido2)
